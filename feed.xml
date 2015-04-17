@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>HashiCorp Blog</title>
+  <subtitle>Blog subtitle</subtitle>
+  <id>http://www.hashicorp.com/blog</id>
+  <link href="http://www.hashicorp.com/blog"/>
+  <link href="http://www.hashicorp.com/feed.xml" rel="self"/>
+  <updated>2015-04-16T14:00:00Z</updated>
+  <author>
+    <name>HashiCorp</name>
+  </author>
+  <entry>
+    <title>Offscale.io launch</title>
+    <link rel="alternate" href="/blog/offscale.io-launch.html"/>
+    <id>/blog/offscale.io-launch.html</id>
+    <published>2015-04-16T14:00:00Z</published>
+    <updated>2015-04-16T14:00:00Z</updated>
+    <author>
+      <name>HashiCorp</name>
+    </author>
+    <summary type="html">&lt;p&gt;At the IBM SoftLayer Sydney datacentre launch earlier this week, offscale.io was launched.&lt;/p&gt;
+
+&lt;p&gt;Here at &lt;a href="http://offscale.io"&gt;offscale.io&lt;/a&gt; we build/integrate hybrid multicloud and related technologies to enable:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;IT automation&lt;/li&gt;
+  &lt;li&gt;Software Engineering streamlining&lt;/li&gt;
+  &lt;li&gt;DevOps...&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    <content type="html">&lt;p&gt;At the IBM SoftLayer Sydney datacentre launch earlier this week, offscale.io was launched.&lt;/p&gt;
+
+&lt;p&gt;Here at &lt;a href="http://offscale.io"&gt;offscale.io&lt;/a&gt; we build/integrate hybrid multicloud and related technologies to enable:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;IT automation&lt;/li&gt;
+  &lt;li&gt;Software Engineering streamlining&lt;/li&gt;
+  &lt;li&gt;DevOps-as-a-Service&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="the-future"&gt;The Future&lt;/h2&gt;
+
+&lt;p&gt;We have a serious roadmap &lt;a href="/about.html"&gt;planned for 2015&lt;/a&gt;. Including:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Multicloud strategy development&lt;/li&gt;
+  &lt;li&gt;Hybrid multicloud integration&lt;/li&gt;
+  &lt;li&gt;PaaS&lt;/li&gt;
+  &lt;li&gt;Big data&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you are interested in using offscale.io at your company, please email:
+&lt;a href="mailto:offscale.io@gmail.com"&gt;offscale.io@gmail.com&lt;/a&gt; and we'd
+be happy to talk with you.&lt;/p&gt;
+</content>
+  </entry>
+</feed>
