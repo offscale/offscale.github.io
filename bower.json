@@ -1,0 +1,19 @@
+{
+  "name": "offscale.io",
+  "version": "0.1.0",
+  "homepage": "http://offscale.io",
+  "authors": [
+    "Samuel Marks <samuelmarks@gmail.com>"
+  ],
+  "description": "Offscale.io website",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-css-only": "~3.3.5"
+  }
+}
