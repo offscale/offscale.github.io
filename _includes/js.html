@@ -15,3 +15,24 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{ "/js/scroll.js" | prepend: site.baseurl }}"></script>
+
+    <script>
+        locationHashChanged();
+        function locationHashChanged() {
+            if (location.hash) {
+                var next = 'C' + location.hash.substr(1);
+                var b = document.getElementById(next);
+                var previous = window.previous;
+                if (b) {
+                    b.classList.add('active');
+                    window.previous = next;
+                }
+                if (previous) {
+                    var d = document.getElementById(previous);
+                    d && d.classList.remove('active');
+                }
+            }
+        }
+        window.onhashchange = locationHashChanged;
+    </script>
+
