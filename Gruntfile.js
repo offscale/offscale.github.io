@@ -3,22 +3,14 @@ module.exports = function (grunt) {
     require('time-grunt')(grunt);
     require('load-grunt-tasks')(grunt);
     grunt.initConfig({
-        shell: {
-            jekyllBuild: {
-                command: 'jekyll build'
-            },
-            jekyllServe: {
-                command: 'jekyll serve'
-            }
-        },
         watch: {
             files: ['_layouts/*.html',
-                    '_posts/*.markdown',
-                    'css/*.css',
-                    'css/libs/*.css',
-                    '_config.yml',
-                    'index.html',
-                    '404.html'],
+                '_posts/*.markdown',
+                'css/*.css',
+                'css/libs/*.css',
+                '_config.yml',
+                'index.html',
+                '404.html'],
             tasks: ['shell:jekyllBuild', 'shell:jekyllServe'],
             options: {
                 spawn: false,
@@ -29,7 +21,24 @@ module.exports = function (grunt) {
         }
     });
 
-    // register custom grunt tasks
-    grunt.registerTask('deploy', ['shell:jekyllBuild']);
-    grunt.registerTask('serve', ['shell:jekyllServe'])
+    grunt.registerTask('build', function () {
+        var child = grunt.util.spawn({
+            cmd: 'jekyll',
+            args: ['build'],
+            stdio: 'inherit'
+        }, this.async());
+
+        child.stdout.pipe(process.stdout);
+        child.stderr.pipe(process.stderr);
+    });
+    grunt.registerTask('serve', function () {
+        var child = grunt.util.spawn({
+            cmd: 'jekyll',
+            args: ['serve', '-P', process.env.PORT || 4000],
+            stdio: 'inherit'
+        }, this.async());
+
+        child.stdout.pipe(process.stdout);
+        child.stderr.pipe(process.stderr);
+    });
 };

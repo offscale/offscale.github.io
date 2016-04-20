@@ -1,0 +1,10 @@
+---
+title: About
+subtitle: Offscale.io also helped launch their open-source offering
+date: 2016-04-20
+thumbnail: offscale.io.png
+alt: Offscale.io logo
+paragraphs:
+  - "I decided to start Offscale.io when I was working in a large-corporate. They had a plethora of private clouds from various providers (and versions). Deploying Mesos clusters to link their entire backbone, establishing global CI/CD pipelines and encouraging heterogeneous storage layers would facilitate increased agility, and most importantly: increased resource utilisation. Projections for first-year cost savings were over 100m."
+  - "OpenDCOS is a major step forward, for now Offscale.io can stop creating making its own open distribution, and instead collaborate with the wider community to make a truly open, universal and accessible datacentre operating system."
+---

@@ -14,7 +14,10 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-css-only": "~3.3.5",
-    "font-awesome": "~4.5.0"
+    "bootstrap-css-only": "^3.3.6",
+    "font-awesome": "^4.6.1"
+  },
+  "resolutions": {
+    "font-awesome": "^4.6.1"
   }
 }
