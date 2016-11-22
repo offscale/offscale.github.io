@@ -2,8 +2,8 @@ url: https://offscale.io
 baseurl:
 
 # Site settings
-title: Offload and outscale with <u>offscale.io</u>
-email: offscale.io@gmail.com
+title: Offload and upscale with <u>offscale.io</u>
+email: samuel@offscale.io
 description: "We've built an open hybrid multicloud which we use to setup CI/CD and Big Data pipelines. You can also use it for multicloud IaaS."
 
 # Color settings (hex-codes without the leading hash-tag)

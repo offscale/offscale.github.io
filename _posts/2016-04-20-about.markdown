@@ -1,8 +1,0 @@
----
-title: About
-subtitle: Offscale.io was launched at the IBM SoftLayer Sydney datacentre launch
-date: 2016-04-20
-hyperlink: http://offscale.io
-thumbnail: offscale.io.png
-alt: Offscale.io logo
----
