@@ -5,9 +5,4 @@ date: 2016-04-20
 hyperlink: http://softlayer.com
 thumbnail: softlayer.png
 alt: softlayer logo
-paragraphs:
-- "http://meetup.com/softlayer-multicloud/events/229750305 [April 12, 2016]"
-- "http://meetup.com/softlayer-multicloud/events/229091355 [March 1, 2016]"
-- "http://meetup.com/softlayer-multicloud/events/221946546 [May 27, 2015]"
-
 ---
