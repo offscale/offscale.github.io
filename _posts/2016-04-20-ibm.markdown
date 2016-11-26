@@ -3,6 +3,6 @@ title: IBM partnership
 subtitle: Offscale.io co-organises their meetups and has cloud sponsorship
 date: 2016-04-20
 hyperlink: http://softlayer.com
-thumbnail: softlayer.png
-alt: softlayer logo
+thumbnail: ibm-softlayer.png
+alt: IBM SoftLayer logo
 ---
