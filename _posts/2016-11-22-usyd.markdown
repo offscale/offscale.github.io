@@ -1,6 +1,4 @@
 ---
-title: University of Sydney
-subtitle: Sydney Medical School education technology
 date: 2016-11-22
 hyperlink: https://sydney.edu.au
 thumbnail: usyd.png
