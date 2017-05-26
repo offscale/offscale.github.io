@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "homepage": "http://offscale.io",
   "authors": [
-    "Samuel Marks <samuelmarks@gmail.com>"
+    "Samuel Marks <samuel@offscale.io>"
   ],
   "description": "Offscale.io website",
   "ignore": [
@@ -14,10 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap-css-only": "^3.3.6",
-    "font-awesome": "^4.6.1"
-  },
-  "resolutions": {
-    "font-awesome": "^4.6.1"
+    "bootstrap-css-only": "^3.3.7",
+    "font-awesome": "^4.7.0"
   }
 }
