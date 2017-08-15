@@ -1,6 +1,0 @@
----
-date: 2016-11-22
-hyperlink: https://sydney.edu.au
-thumbnail: usyd.png
-alt: University of Sydney logo
----

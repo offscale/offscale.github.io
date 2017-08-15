@@ -1,8 +1,0 @@
-{% include css/bootstrap.min.css %}
-{% include css/agency.css %}
-
-.alert-green {
-    background-color: #5CB85C;
-    border-color: #4CAE4C;
-    color: #FFF;
-}
