@@ -50,6 +50,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 First [`npm i -g angular-cli-ghpages`](https://github.com/angular-schule/angular-cli-ghpages), then:
 
     ng build -prod -aot
+    echo 'offscale.io' > dist/CNAME; cp README.md dist
     ngh --repo=https://github.com/offscale/offscale.github.io --message='Using angular-cli-ghpages' --branch='master'
 
 ## Derived
