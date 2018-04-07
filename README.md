@@ -20,7 +20,7 @@ Assumes you have latest Node.JS and npm on *nix machine, then just run:
 
 ---
 
-FYI: This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
+FYI: This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
 ## Development server
 
@@ -55,4 +55,4 @@ First [`npm i -g angular-cli-ghpages`](https://github.com/angular-schule/angular
 
 ## Derived
 
-Theme and scaffold stolen from [https://material.angular.io](https://material.angular.io) ([src](https://github.com/angular/material.angular.io)).
+Header, footer and subpage stolen from [https://material.angular.io](https://material.angular.io) ([src](https://github.com/angular/material.angular.io)); infographic [stolen from the Canadians](https://github.com/bcgov/interactive-infographic).
