@@ -51,7 +51,7 @@ First [`npm i -g angular-cli-ghpages`](https://github.com/angular-schule/angular
 
     ng build -prod --aot=false
     echo 'offscale.io' > dist/CNAME; cp README.md dist
-    ngh --repo=https://github.com/offscale/offscale.github.io --message='Using angular-cli-ghpages' --branch='master'
+    ngh --repo=https://github.com/offscale/offscale.github.io --branch='master' --message='Using angular-cli-ghpages'
 
 ## Derived
 
