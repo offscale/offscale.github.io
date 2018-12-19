@@ -49,7 +49,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Deploy distribution
 First [`npm i -g angular-cli-ghpages`](https://github.com/angular-schule/angular-cli-ghpages), then:
 
-    ng build --prod --aot=false
+    ng build --prod
     cp README.md dist/offscale-www
     ngh -c offscale.io --dir='dist/offscale-www' --repo=https://github.com/offscale/offscale.github.io --branch='master' --message='Using angular-cli-ghpages'
 
