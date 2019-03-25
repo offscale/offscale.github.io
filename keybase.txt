@@ -1,0 +1,57 @@
+==================================================================
+https://keybase.io/samuelmarks
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://offscale.io
+  * I am samuelmarks (https://keybase.io/samuelmarks) on keybase.
+  * I have a public key ASA_NL6SAsbWscw8Zy4_1_MPE1imscMAwBmaqg3uoIj2fgo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01203f34be9202c6d6b1cc3c672e3fd7f30f1358a6b1c300c0199aaa0deea088f67e0a",
+      "host": "keybase.io",
+      "kid": "01203f34be9202c6d6b1cc3c672e3fd7f30f1358a6b1c300c0199aaa0deea088f67e0a",
+      "uid": "c09966a615a54335554e0d3b43625119",
+      "username": "samuelmarks"
+    },
+    "merkle_root": {
+      "ctime": 1553494162,
+      "hash": 
+"ab5757ebdfe325e4ef729aa3a20b9c807b993f58df24fe8ccbc0a5b9759b428dc51459b1ddd4e9b00680e90d14871ca62b6b5a77eeb89eb55a227dead913319d",
+      "hash_meta": "3f4fe9f46dc92593efdf4d2547928383415774b991c6774847dc986cdb3965ed",
+      "seqno": 5015248
+    },
+    "service": {
+      "entropy": "9GHYO809oX1k5fcYneMYfH9J",
+      "hostname": "offscale.io",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "3.1.2"
+  },
+  "ctime": 1553494166,
+  "expire_in": 504576000,
+  "prev": "c121d4e2a6c9c9bddadce8359ccc30016b251e441761d06feb9e8cf801ad46db",
+  "seqno": 5,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgPzS+kgLG1rHMPGcuP9fzDxNYprHDAMAZmqoN7qCI9n4Kp3BheWxvYWTESpcCBcQgwSHU4qbJyb3a3Og1nMwwAWslHkQXYdBv656M+AGtRtvEIL3qlwrttcSuhYR3k9xgCOE2p8dXr+RorCM7Z8jnn8ZjAgHCo3NpZ8RAlaNHVnRzu9198toBuWXJwiiEsB2geXnX3JgsWcSDvuMC2OcoS+Uazu3lOBaTxZ7YvbCb2FDc7cO+zixpi4LgAahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIBzmevXvLJZWnRIBfyyBop0U3/41R8uLuQhJMvplFJBdo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/samuelmarks
+
+==================================================================
