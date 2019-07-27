@@ -2071,20 +2071,16 @@ pre[data-line] .line-highlight[data-end]:after {
     <span class="token punctuation">-</span> <span class="token string">&quot;lts/*&quot;</span>
 <span class="token key atrule">cache</span><span class="token punctuation">:</span>
     <span class="token key atrule">npm</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
-
 <span class="token key atrule">before_install</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> npm install <span class="token punctuation">-</span>g npm
-
 <span class="token key atrule">install</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> npm ci
-
 <span class="token key atrule">script</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> tsc
     <span class="token punctuation">-</span> npm test
-
 <span class="token key atrule">after_success</span><span class="token punctuation">:</span>
     <span class="token punctuation">-</span> npm run coverage
-</pre></section><section lineno="196" class="slide " data-line="196" data-h="19" data-v="0">
+</pre></section><section lineno="192" class="slide " data-line="192" data-h="19" data-v="0">
 <h1 class="mume-header" id="medium-hang">Medium-hang</h1>
 
 <ul>
@@ -2100,7 +2096,7 @@ pre[data-line] .line-highlight[data-end]:after {
 </ul>
 </li>
 </ul>
-</section><section lineno="205" class="slide " data-line="205" data-h="20" data-v="0">
+</section><section lineno="201" class="slide " data-line="201" data-h="20" data-v="0">
 <h1 class="mume-header" id="medium-hanging-fruit">Medium-hanging fruit</h1>
 
 <ul>
@@ -2110,7 +2106,7 @@ pre[data-line] .line-highlight[data-end]:after {
 </ul>
 </li>
 </ul>
-</section><section lineno="211" class="slide " data-line="211" data-h="21" data-v="0">
+</section><section lineno="207" class="slide " data-line="207" data-h="21" data-v="0">
 <pre data-role="codeBlock" data-info="docker" class="language-docker"><span class="token comment"># Filename: Dockerfile</span>
 
 <span class="token comment"># Use Node.js&apos; long-term support release</span>
@@ -2129,19 +2125,19 @@ pre[data-line] .line-highlight[data-end]:after {
 <span class="token keyword">EXPOSE</span> 80
 
 <span class="token keyword">ENTRYPOINT</span> <span class="token punctuation">[</span><span class="token string">&quot;npm&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;start&quot;</span><span class="token punctuation">]</span>
-</pre></section><section lineno="233" class="slide " data-line="233" data-h="22" data-v="0">
+</pre></section><section lineno="229" class="slide " data-line="229" data-h="22" data-v="0">
 <h1>Workshop</h1>
-</section><section lineno="237" class="slide " data-line="237" data-h="23" data-v="0">
+</section><section lineno="233" class="slide " data-line="233" data-h="23" data-v="0">
 <h1 class="mume-header" id="0-workshop-contribute">0) Workshop: contribute</h1>
 
 <ol start="0">
 <li>Create an account on <a href="https://github.com">https://github.com</a></li>
 <li>Pick a project, e.g.: from <a href="https://github.com/explore">https://github.com/explore</a></li>
 </ol>
-</section><section lineno="243" class="slide " data-line="243" data-h="24" data-v="0">
+</section><section lineno="239" class="slide " data-line="239" data-h="24" data-v="0">
 <h1 class="mume-header" id="explorepng0_explorepng"><img src="0_explore.png" alt="explore.png"></h1>
 
-</section><section lineno="246" class="slide " data-line="246" data-h="25" data-v="0">
+</section><section lineno="242" class="slide " data-line="242" data-h="25" data-v="0">
 <h1 class="mume-header" id="1-contribute">1) Contribute</h1>
 
 <ol start="0">
@@ -2150,7 +2146,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>Run <code>git clone</code> followed by the URL of the repository, e.g.:</li>
 </ol>
 <pre data-role="codeBlock" data-info="sh" class="language-bash"><span class="token function">git</span> clone https://github.com/SamuelMarks/restify-orm-scaffold
-</pre></section><section lineno="256" class="slide " data-line="256" data-h="26" data-v="0">
+</pre></section><section lineno="252" class="slide " data-line="252" data-h="26" data-v="0">
 <h1 class="mume-header" id="2-contribute">2) Contribute</h1>
 
 <ol start="3">
@@ -2160,7 +2156,7 @@ pre[data-line] .line-highlight[data-end]:after {
 </ol>
 <pre data-role="codeBlock" data-info="sh" class="language-bash"><span class="token function">git</span> config --global user.name <span class="token string">&quot;FIRST_NAME LAST_NAME&quot;</span>
 <span class="token function">git</span> config --global user.email <span class="token string">&quot;NAME@example.com&quot;</span>
-</pre></section><section lineno="267" class="slide " data-line="267" data-h="27" data-v="0">
+</pre></section><section lineno="263" class="slide " data-line="263" data-h="27" data-v="0">
 <h1 class="mume-header" id="3-contribute">3) Contribute</h1>
 
 <ol start="6">
@@ -2175,7 +2171,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>Commit your modifications with:</li>
 </ol>
 <pre data-role="codeBlock" data-info="sh" class="language-bash"><span class="token function">git</span> commit --message <span class="token string">&quot;Commit message goes here&quot;</span>
-</pre></section><section lineno="283" class="slide " data-line="283" data-h="28" data-v="0">
+</pre></section><section lineno="279" class="slide " data-line="279" data-h="28" data-v="0">
 <h1 class="mume-header" id="4-contribute">4) Contribute</h1>
 
 <ol start="9">
