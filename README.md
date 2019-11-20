@@ -1,12 +1,16 @@
 offscale.io
 ===========
-Bunch of guides for using my offscale projects; and an introduction to services offered.
+[![Build Status](https://travis-ci.org/offscale/www.svg?branch=master)](https://travis-ci.org/offscale/www)
 
-Written in Angular with Material. Butchered angular.material.io.
+Bunch of guides for Compiler Driven Development (CDD).
 
-## Build dist
+## Deploy distribution
+First [`npm i -g angular-cli-ghpages`](https://github.com/angular-schule/angular-cli-ghpages), then:
 
-    rm -rf dist; ng build --prod && d=../offscale.github.io && rm -rf "$d/dist" && mv "$PWD/dist" "$d" && cd "$d" && (git add .; git status) || ( >&2 echo BUILD FAILED )
+    ng build --prod
+    cp README.md dist/offscale-www
+    printf 'offscale.io\n' >> dist/offscale-www/CNAME
+    ngh --dir='dist/offscale-www' --repo='https://github.com/offscale/offscale.github.io' --branch='master' --message="$(git log -1 --pretty='%B')"
 
 ## Install
 
@@ -17,7 +21,7 @@ Assumes you have latest Node.JS and npm on *nix machine, then just run:
 
 ---
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.9.
 
 ## Development server
 
@@ -43,16 +47,7 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Deploy distribution
-First [`npm i -g angular-cli-ghpages`](https://github.com/angular-schule/angular-cli-ghpages), then:
-
-    ng build --prod
-    cp README.md dist/offscale-www
-    ngh -c offscale.io --dir='dist/offscale-www' --repo=https://github.com/offscale/offscale.github.io --branch='master' --message='Using angular-cli-ghpages'
-
-## Derived
-
-Header, footer and subpage stolen from [https://material.angular.io](https://material.angular.io) ([src](https://github.com/angular/material.angular.io)); infographic [stolen from the Canadians](https://github.com/bcgov/interactive-infographic).
+---
 
 ## License
 
