@@ -1,6 +1,7 @@
 offscale.io
 ===========
-[![Build Status](https://travis-ci.org/offscale/www.svg?branch=master)](https://travis-ci.org/offscale/www)
+[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![GitHub Pages](https://github.com/offscale/www/workflows/GitHub%20Pages/badge.svg)
 
 Bunch of guides for Compiler Driven Development (CDD).
 
