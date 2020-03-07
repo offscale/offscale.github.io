@@ -1,9 +1,8 @@
 offscale.io
 ===========
-[![License](https://img.shields.io/badge/license-Apache--2.0%20OR%20MIT-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ![GitHub Pages](https://github.com/offscale/www/workflows/GitHub%20Pages/badge.svg)
 
-Bunch of guides for Compiler Driven Development (CDD).
+Branding, contact, and information SPA.
 
 ## Deploy distribution
 First [`npm i -g angular-cli-ghpages`](https://github.com/angular-schule/angular-cli-ghpages), then:
