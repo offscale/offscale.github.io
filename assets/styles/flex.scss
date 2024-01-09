@@ -31,6 +31,10 @@
   max-width: 33%;
 }
 
+.width-pc-33-lt-md-100 {
+  max-width: 33%;
+}
+
 .width-pc-50 {
   max-width: 50%;
 }
@@ -47,6 +51,7 @@
 
   section {
     padding: 0;
+    margin: 0;
   }
 
   #github-logo {
@@ -68,11 +73,29 @@
   .width-pc-50-lt-md-100 {
     max-width: 100%;
   }
+
+  .width-pc-33-lt-md-100 {
+    max-width: 100%;
+  }
+
+  .gt-md-padding-right-100px {
+    padding-right: 0;
+  }
 }
 
 /* gt-md */
 @media screen and (min-width: 1280px) {
+  .gt-md-padding-right-100px {
+    padding-right: 100px;
+  }
+
   .gt-md-width-pc-50 {
     max-width: 50%;
   }
+
+  .padding-pc-18-gt-md {
+    padding: 0 18%
+  }
+
+
 }
