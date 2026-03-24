@@ -1,0 +1,25 @@
+node_modules/
+.DS_Store
+*.log
+npm-debug.log
+.env
+
+# Auto-generated diagrams
+*.mmd
+deploy.svg
+ml.svg
+c_multiplatform.svg
+sdk_cli_docs.svg
+interactive_docs.svg
+
+# Temporary files
+1.html
+2.html
+3.html
+
+# Python
+__pycache__/
+*.py[cod]
+*.class
+
+openapi.svg
