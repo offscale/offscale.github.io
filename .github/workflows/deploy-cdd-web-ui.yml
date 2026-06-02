@@ -2,7 +2,7 @@ name: Deploy Web UI to GitHub Pages
 
 on:
   push:
-    branches: ['main', 'master']
+    branches: [main, master]
   workflow_dispatch:
 
 permissions:
@@ -17,28 +17,33 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout main site (offscale.github.io)
+        uses: actions/checkout@v4
+        with:
+          path: main-site
+
       - name: Checkout cdd-web-ui
         uses: actions/checkout@v4
         with:
-          repository: 'SamuelMarks/cdd-web-ui'
-          path: 'cdd-web-ui'
+          repository: SamuelMarks/cdd-web-ui
+          path: cdd-web-ui
 
       - name: Checkout cdd-docs-ui
         uses: actions/checkout@v4
         with:
-          repository: 'SamuelMarks/cdd-docs-ui'
-          path: 'cdd-docs-ui'
+          repository: SamuelMarks/cdd-docs-ui
+          path: cdd-docs-ui
 
       - name: Checkout cdd-ctl
         uses: actions/checkout@v4
         with:
-          repository: 'SamuelMarks/cdd-ctl'
-          path: 'cdd-ctl'
+          repository: SamuelMarks/cdd-ctl
+          path: cdd-ctl
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: 20
 
       - name: Install Binaryen
         run: sudo apt-get update && sudo apt-get install -y binaryen
@@ -81,14 +86,13 @@ jobs:
       - name: Compute base-href and Build Angular App
         working-directory: ./cdd-web-ui
         run: |
-          BASE_PATH=$(echo $DEPLOY_LOCATION | sed -e 's/^[^\/]*//')
-          if [ -z "$BASE_PATH" ] || [ "$BASE_PATH" == "/" ]; then
-             BASE_HREF="/"
-          else
-             BASE_HREF="$BASE_PATH/"
-          fi
-          echo "Building Angular with --base-href=$BASE_HREF"
-          npx ng build --configuration production --base-href $BASE_HREF
+          echo "Building Angular with --base-href=/cdd-web-ui/"
+          npx ng build --configuration production --base-href /cdd-web-ui/
+
+      - name: Combine Site Artifacts
+        run: |
+          rm -rf main-site/cdd-web-ui
+          cp -r cdd-web-ui/dist/cdd-web-ui/browser main-site/cdd-web-ui
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -96,7 +100,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './cdd-web-ui/dist/cdd-web-ui/browser'
+          path: ./main-site
 
   deploy:
     needs: build
