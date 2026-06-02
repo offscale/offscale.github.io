@@ -1,0 +1,110 @@
+name: Deploy Web UI to GitHub Pages
+
+on:
+  push:
+    branches: ['main', 'master']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+env:
+  DEPLOY_LOCATION: /cdd-web-ui
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cdd-web-ui
+        uses: actions/checkout@v4
+        with:
+          repository: 'SamuelMarks/cdd-web-ui'
+          path: 'cdd-web-ui'
+
+      - name: Checkout cdd-docs-ui
+        uses: actions/checkout@v4
+        with:
+          repository: 'SamuelMarks/cdd-docs-ui'
+          path: 'cdd-docs-ui'
+
+      - name: Checkout cdd-ctl
+        uses: actions/checkout@v4
+        with:
+          repository: 'SamuelMarks/cdd-ctl'
+          path: 'cdd-ctl'
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Binaryen
+        run: sudo apt-get update && sudo apt-get install -y binaryen
+
+      - name: Build WASM SDK
+        working-directory: ./cdd-ctl/cdd-ctl-wasm-sdk
+        run: |
+          npm install --ignore-scripts
+          npm run build
+
+      - name: Fetch and Optimize WASM Binaries
+        working-directory: ./cdd-ctl
+        run: |
+          chmod +x ./scripts/fetch_wasm.sh
+          ./scripts/fetch_wasm.sh
+
+          mkdir -p ./optimized-wasm
+          for wasm_file in cdd-ctl-wasm-sdk/assets/wasm/*.wasm; do
+            filename=$(basename "$wasm_file")
+            echo "Optimizing $filename..."
+            wasm-opt -O3 "$wasm_file" -o "./optimized-wasm/$filename" || cp "$wasm_file" "./optimized-wasm/$filename"
+          done
+
+      - name: Build cdd-docs-ui
+        working-directory: ./cdd-docs-ui
+        run: |
+          npm install --ignore-scripts
+          npm run build
+
+      - name: Install UI Dependencies
+        working-directory: ./cdd-web-ui
+        run: npm ci --ignore-scripts
+
+      - name: Copy WASM Binaries to Web UI
+        run: |
+          mkdir -p cdd-web-ui/public/assets/wasm
+          cp cdd-ctl/optimized-wasm/*.wasm cdd-web-ui/public/assets/wasm/ || true
+          cp cdd-ctl/cdd-ctl-wasm-sdk/assets/wasm-support.json cdd-web-ui/public/assets/wasm-support.json || true
+
+      - name: Compute base-href and Build Angular App
+        working-directory: ./cdd-web-ui
+        run: |
+          BASE_PATH=$(echo $DEPLOY_LOCATION | sed -e 's/^[^\/]*//')
+          if [ -z "$BASE_PATH" ] || [ "$BASE_PATH" == "/" ]; then
+             BASE_HREF="/"
+          else
+             BASE_HREF="$BASE_PATH/"
+          fi
+          echo "Building Angular with --base-href=$BASE_HREF"
+          npx ng build --configuration production --base-href $BASE_HREF
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './cdd-web-ui/dist/cdd-web-ui/browser'
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
