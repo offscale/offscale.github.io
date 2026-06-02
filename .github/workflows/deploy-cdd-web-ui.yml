@@ -67,6 +67,16 @@ jobs:
             wasm-opt -O3 "$wasm_file" -o "./optimized-wasm/$filename" || cp "$wasm_file" "./optimized-wasm/$filename"
           done
 
+          # Download JS Wrappers and C# Zip manually since fetch_wasm.sh skips them
+          curl -sL -o ./optimized-wasm/cdd-ts.js "https://github.com/offscale/cdd-ts/releases/latest/download/cdd-ts.js" || true
+          curl -sL -o ./optimized-wasm/cdd-java.js "https://github.com/SamuelMarks/cdd-java/releases/latest/download/cdd-java.js" || true
+          curl -sL -o ./cdd-csharp-wasm.zip "https://github.com/SamuelMarks/cdd-csharp/releases/latest/download/cdd-csharp-wasm.zip" || true
+          
+          # Force python-all, java, and ts to true in the generated JSON since they are now present
+          sed -i 's/"python-all": false/"python-all": true/g' cdd-ctl-wasm-sdk/assets/wasm-support.json || true
+          sed -i 's/"java": false/"java": true/g' cdd-ctl-wasm-sdk/assets/wasm-support.json || true
+          sed -i 's/"ts": false/"ts": true/g' cdd-ctl-wasm-sdk/assets/wasm-support.json || true
+
       - name: Build cdd-docs-ui
         working-directory: ./cdd-docs-ui
         run: |
@@ -79,8 +89,10 @@ jobs:
 
       - name: Copy WASM Binaries to Web UI
         run: |
-          mkdir -p cdd-web-ui/public/assets/wasm
+          mkdir -p cdd-web-ui/public/assets/wasm/cdd-csharp
           cp cdd-ctl/optimized-wasm/*.wasm cdd-web-ui/public/assets/wasm/ || true
+          cp cdd-ctl/optimized-wasm/*.js cdd-web-ui/public/assets/wasm/ || true
+          unzip -q cdd-ctl/cdd-csharp-wasm.zip -d cdd-web-ui/public/assets/wasm/cdd-csharp/ || true
           cp cdd-ctl/cdd-ctl-wasm-sdk/assets/wasm-support.json cdd-web-ui/public/assets/wasm-support.json || true
 
       - name: Compute base-href and Build Angular App
