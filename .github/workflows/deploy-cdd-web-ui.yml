@@ -18,30 +18,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main site (offscale.github.io)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           path: main-site
 
       - name: Checkout cdd-web-ui
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: SamuelMarks/cdd-web-ui
           path: cdd-web-ui
 
       - name: Checkout cdd-docs-ui
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: SamuelMarks/cdd-docs-ui
           path: cdd-docs-ui
 
       - name: Checkout cdd-ctl
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: SamuelMarks/cdd-ctl
           path: cdd-ctl
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 20
 
@@ -107,10 +107,10 @@ jobs:
           cp -r cdd-web-ui/dist/cdd-web-ui/browser main-site/cdd-web-ui
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./main-site
 
@@ -123,4 +123,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
