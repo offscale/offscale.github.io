@@ -477,7 +477,10 @@ body, .feature-card, .comparison-section, .comparison-table th, .comparison-tabl
     stroke: #ff6a00 !important;
 }
 
-[data-theme="dark"] svg.inline-svg .labelBkg {
+[data-theme="dark"] svg.inline-svg .labelBkg,
+[data-theme="dark"] svg.inline-svg .edgeLabel,
+[data-theme="dark"] svg.inline-svg .edgeLabel p,
+[data-theme="dark"] svg.inline-svg .edgeLabel rect {
     fill: #1a1a1a !important;
     background-color: #1a1a1a !important;
 }
@@ -708,7 +711,9 @@ body, .feature-card, .comparison-section, .comparison-table th, .comparison-tabl
 .badge-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: var(--primary); margin-inline-end: 8px; box-shadow: 0 0 6px var(--primary); }
 .roadmap-title { font-size: 2.25rem; color: var(--text-primary); margin-bottom: 32px; }
 .roadmap-grid { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; max-width: 800px; margin: 0 auto; }
-.roadmap-card { flex: 1 1 300px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-1); text-align: left; }
+.roadmap-card { flex: 1 1 300px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-1); text-align: left; transition: box-shadow var(--transition-speed), transform var(--transition-speed); outline: none; }
+.roadmap-card:hover, .roadmap-card:focus-visible { box-shadow: var(--shadow-3); transform: translateY(-4px); }
+.roadmap-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 .roadmap-card-title { font-size: 1.2rem; color: var(--text-primary); margin-bottom: 12px; }
 .roadmap-card-desc { color: var(--text-secondary); line-height: 1.5; margin: 0; }
 
