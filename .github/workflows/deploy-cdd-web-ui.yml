@@ -45,6 +45,7 @@ jobs:
         with:
           repository: SamuelMarks/cdd-openapi-test-harness
           path: cdd-openapi-test-harness
+          submodules: recursive
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -53,6 +54,10 @@ jobs:
 
       - name: Install Binaryen
         run: sudo apt-get update && sudo apt-get install -y binaryen
+
+      - name: Build cdd-java-cli
+        working-directory: ./cdd-openapi-test-harness/cdd-java/package
+        run: npm install --ignore-scripts && npm run build
 
       - name: Build WASM SDK
         working-directory: ./cdd-ctl/cdd-ctl-wasm-sdk
