@@ -78,6 +78,7 @@ jobs:
           curl -sL -o ./optimized-wasm/cdd-ts-javy.wasm "https://github.com/offscale/cdd-ts/releases/latest/download/cdd-ts-javy.wasm" || true
           curl -sL -o ./optimized-wasm/cdd-java.js "https://github.com/SamuelMarks/cdd-java/releases/latest/download/cdd-java.js" || true
           curl -sL -o ./cdd-csharp-wasm.zip "https://github.com/SamuelMarks/cdd-csharp/releases/latest/download/cdd-csharp-wasm.zip" || true
+          curl -sL -o ./optimized-wasm/openapi_python_client-0.0.1-py3-none-any.whl "https://github.com/offscale/cdd-python-all/releases/latest/download/openapi_python_client-0.0.1-py3-none-any.whl" || true
           
           # Force python-all, java, and ts to true in the generated JSON since they are now present
           sed -i 's/"python-all": false/"python-all": true/g' cdd-ctl-wasm-sdk/assets/wasm-support.json || true
