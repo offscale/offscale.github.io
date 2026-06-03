@@ -56,8 +56,13 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y binaryen
 
       - name: Build cdd-java-cli
-        working-directory: ./cdd-openapi-test-harness/cdd-java/package
-        run: npm install --ignore-scripts && npm run build
+        working-directory: ./cdd-openapi-test-harness/cdd-java
+        run: |
+          git checkout master
+          git pull origin master
+          cd package
+          npm install --ignore-scripts
+          npm run build
 
       - name: Build WASM SDK
         working-directory: ./cdd-ctl/cdd-ctl-wasm-sdk
