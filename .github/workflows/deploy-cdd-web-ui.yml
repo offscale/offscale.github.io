@@ -40,6 +40,12 @@ jobs:
           repository: SamuelMarks/cdd-ctl
           path: cdd-ctl
 
+      - name: Checkout cdd-openapi-test-harness
+        uses: actions/checkout@v6
+        with:
+          repository: SamuelMarks/cdd-openapi-test-harness
+          path: cdd-openapi-test-harness
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
@@ -69,6 +75,7 @@ jobs:
 
           # Download JS Wrappers and C# Zip manually since fetch_wasm.sh skips them
           curl -sL -o ./optimized-wasm/cdd-ts.js "https://github.com/offscale/cdd-ts/releases/latest/download/cdd-ts.js" || true
+          curl -sL -o ./optimized-wasm/cdd-ts-javy.wasm "https://github.com/offscale/cdd-ts/releases/latest/download/cdd-ts-javy.wasm" || true
           curl -sL -o ./optimized-wasm/cdd-java.js "https://github.com/SamuelMarks/cdd-java/releases/latest/download/cdd-java.js" || true
           curl -sL -o ./cdd-csharp-wasm.zip "https://github.com/SamuelMarks/cdd-csharp/releases/latest/download/cdd-csharp-wasm.zip" || true
           
@@ -89,10 +96,10 @@ jobs:
 
       - name: Copy WASM Binaries to Web UI
         run: |
-          mkdir -p cdd-web-ui/public/assets/wasm/cdd-csharp
+          mkdir -p cdd-web-ui/public/assets/wasm/
           cp cdd-ctl/optimized-wasm/*.wasm cdd-web-ui/public/assets/wasm/ || true
           cp cdd-ctl/optimized-wasm/*.js cdd-web-ui/public/assets/wasm/ || true
-          unzip -q cdd-ctl/cdd-csharp-wasm.zip -d cdd-web-ui/public/assets/wasm/cdd-csharp/ || true
+          unzip -q cdd-ctl/cdd-csharp-wasm.zip -d cdd-web-ui/public/assets/wasm/ || true
           cp cdd-ctl/cdd-ctl-wasm-sdk/assets/wasm-support.json cdd-web-ui/public/assets/wasm-support.json || true
 
       - name: Compute base-href and Build Angular App
