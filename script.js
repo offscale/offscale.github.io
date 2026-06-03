@@ -18,9 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (theme == 'dark') {
             document.documentElement.setAttribute('data-theme', 'light');
             localStorage.setItem('theme', 'light');
+            themeToggleBtn.setAttribute('aria-label', 'Switch to dark mode');
         } else {
             document.documentElement.setAttribute('data-theme', 'dark');
             localStorage.setItem('theme', 'dark');
+            themeToggleBtn.setAttribute('aria-label', 'Switch to light mode');
         }
     });
 });

@@ -455,8 +455,14 @@ body, .feature-card, .comparison-section, .comparison-table th, .comparison-tabl
     stroke: #ff6a00 !important;
 }
 
-[data-theme="dark"] svg.inline-svg text,
-[data-theme="dark"] svg.inline-svg span {
+[data-theme="dark"] #my-svg.inline-svg text,
+[data-theme="dark"] #my-svg.inline-svg span,
+[data-theme="dark"] #my-svg.inline-svg p,
+[data-theme="dark"] #my-svg.inline-svg .nodeLabel p,
+[data-theme="dark"] #my-svg.inline-svg .mindmap-node p,
+[data-theme="dark"] #my-svg.inline-svg .node p,
+[data-theme="dark"] #my-svg.inline-svg .mindmap-node span,
+[data-theme="dark"] #my-svg.inline-svg .node span {
     fill: #e0e0e0 !important;
     color: #e0e0e0 !important;
 }
@@ -628,22 +634,6 @@ body, .feature-card, .comparison-section, .comparison-table th, .comparison-tabl
 [data-theme="dark"] #theme-toggle .light-icon { display: inline; }
 [data-theme="dark"] #theme-toggle .dark-icon { display: none; }
 
-#theme-toggle::before {
-    content: "Switch to dark mode";
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
-[data-theme="dark"] #theme-toggle::before {
-    content: "Switch to light mode";
-}
-
 /* Refactored Utility & Component Classes */
 .text-inherit { color: inherit; }
 .no-underline { text-decoration: none; }
@@ -680,10 +670,10 @@ body, .feature-card, .comparison-section, .comparison-table th, .comparison-tabl
 .btn:hover {
     transform: translateY(-2px);
 }
-.btn-primary { background-color: var(--primary); color: white; padding: 14px 28px; box-shadow: 0 4px 6px rgba(255, 106, 0, 0.25); }
+.btn-primary { background-color: var(--primary); color: #1a1a1a; padding: 14px 28px; box-shadow: 0 4px 6px rgba(255, 106, 0, 0.25); }
 .btn-primary:hover { box-shadow: 0 6px 12px rgba(255, 106, 0, 0.35); }
 .btn-outline { background-color: transparent; color: var(--primary); border: 2px solid var(--primary); padding: 12px 26px; }
-.btn-demo { background-color: var(--primary); color: white; padding: 16px 32px; font-weight: 700; font-size: 1.25rem; box-shadow: 0 0 20px rgba(255, 106, 0, 0.4); }
+.btn-demo { background-color: var(--primary); color: #1a1a1a; padding: 16px 32px; font-weight: 700; font-size: 1.25rem; box-shadow: 0 0 20px rgba(255, 106, 0, 0.4); }
 .btn-demo:hover { box-shadow: 0 0 25px rgba(255, 106, 0, 0.6); transform: translateY(-2px); }
 .btn-icon { width: 24px; height: 24px; margin-inline-end: 12px; }
 
