@@ -101,8 +101,7 @@ jobs:
           cp cdd-ctl/optimized-wasm/*.wasm cdd-web-ui/public/assets/wasm/ || true
           cp cdd-ctl/optimized-wasm/*.js cdd-web-ui/public/assets/wasm/ || true
           cp cdd-ctl/optimized-wasm/*.whl cdd-web-ui/public/assets/wasm/ || true
-          mkdir -p cdd-web-ui/public/assets/wasm/cdd-csharp/
-          unzip -q cdd-ctl/cdd-csharp-wasm.zip -d cdd-web-ui/public/assets/wasm/cdd-csharp/ || true
+          unzip -q cdd-ctl/cdd-csharp-wasm.zip -d cdd-web-ui/public/assets/wasm/ || true
           cp cdd-ctl/cdd-ctl-wasm-sdk/assets/wasm-support.json cdd-web-ui/public/assets/wasm-support.json || true
 
       - name: Compute base-href and Build Angular App
