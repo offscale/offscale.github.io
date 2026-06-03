@@ -1,0 +1,1 @@
+# Deployment Guidelines\n\n- **WASM Assets:** Never commit compiled WASM assets (`assets/wasm/`) to this repository. These are large files that will bloat the git history. They should be managed exclusively via GitHub Actions/Releases/Pages and excluded via `.gitignore`. When manually updating the `cdd-web-ui` build artifacts, always exclude or remove the `assets/wasm` folder.
