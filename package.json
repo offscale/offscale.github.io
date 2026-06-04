@@ -1,0 +1,29 @@
+{
+  "name": "offscale.github.io",
+  "version": "1.0.0",
+  "description": "This repository hosts the source code for the **Offscale** landing page: [offscale.github.io](https://offscale.github.io).",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/offscale/offscale.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/offscale/offscale.github.io/issues"
+  },
+  "homepage": "https://github.com/offscale/offscale.github.io#readme",
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
+    "vite": "^8.0.16"
+  }
+}

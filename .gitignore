@@ -25,3 +25,6 @@ __pycache__/
 openapi.svg
 cdd-web-ui/assets/wasm/
 cdd-web-ui/browser/
+node_modules/
+dist/
+coverage/
