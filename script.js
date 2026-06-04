@@ -5,17 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     const currentTheme = localStorage.getItem('theme');
 
-    if (currentTheme == 'dark') {
+    if (currentTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
-    } else if (currentTheme == 'light') {
+    } else if (currentTheme === 'light') {
         document.documentElement.setAttribute('data-theme', 'light');
-    } else if (prefersDarkScheme.matches) {
-        document.documentElement.setAttribute('data-theme', 'dark');
     }
 
     themeToggleBtn.addEventListener('click', () => {
         let theme = document.documentElement.getAttribute('data-theme');
-        if (theme == 'dark') {
+        let isCurrentlyDark = theme === 'dark' || (!theme && prefersDarkScheme.matches);
+
+        if (isCurrentlyDark) {
             document.documentElement.setAttribute('data-theme', 'light');
             localStorage.setItem('theme', 'light');
             themeToggleBtn.setAttribute('aria-label', 'Switch to dark mode');

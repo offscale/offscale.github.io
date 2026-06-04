@@ -405,6 +405,19 @@ main {
 
 
 /* Dark Theme Variables */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --background: #121212;
+        --surface: #1e1e1e;
+        --on-background: #e0e0e0;
+        --on-surface: #e0e0e0;
+        --text-primary: rgba(255, 255, 255, 0.87);
+        --text-secondary: rgba(255, 255, 255, 0.60);
+        --shadow-1: 0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.5);
+        --border: #333;
+        --section-alt: #161616;
+    }
+}
 [data-theme="dark"] {
     --background: #121212;
     --surface: #1e1e1e;
@@ -415,6 +428,69 @@ main {
     --shadow-1: 0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.5);
     --border: #333;
     --section-alt: #161616;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) body {
+        background-color: var(--background);
+        color: var(--text-primary);
+    }
+    :root:not([data-theme="light"]) .comparison-table th { background-color: #2a2a2a; color: var(--text-primary); }
+    :root:not([data-theme="light"]) .comparison-table td.highlight { background-color: #1a2a1e; }
+    :root:not([data-theme="light"]) .comparison-table th.highlight { background-color: #1e3a24; }
+    :root:not([data-theme="light"]) .hero-pipeline { background-color: var(--background); }
+    :root:not([data-theme="light"]) .hero-pipeline .hero-title .static-text { color: var(--text-primary); }
+    :root:not([data-theme="light"]) .hero-pipeline .hero-subtitle { color: var(--text-secondary); }
+    :root:not([data-theme="light"]) .flowchart text { fill: #e0e0e0 !important; }
+    :root:not([data-theme="light"]) .flowchart .node rect, 
+    :root:not([data-theme="light"]) .flowchart .node circle, 
+    :root:not([data-theme="light"]) .flowchart .node polygon { fill: #2c1a0c !important; }
+    :root:not([data-theme="light"]) svg.inline-svg rect,
+    :root:not([data-theme="light"]) svg.inline-svg circle,
+    :root:not([data-theme="light"]) svg.inline-svg polygon,
+    :root:not([data-theme="light"]) svg.inline-svg path.node-bkg {
+        fill: #2c1a0c !important;
+        stroke: #ff6a00 !important;
+    }
+    :root:not([data-theme="light"]) #my-svg.inline-svg text,
+    :root:not([data-theme="light"]) #my-svg.inline-svg span,
+    :root:not([data-theme="light"]) #my-svg.inline-svg p,
+    :root:not([data-theme="light"]) #my-svg.inline-svg .nodeLabel p,
+    :root:not([data-theme="light"]) #my-svg.inline-svg .mindmap-node p,
+    :root:not([data-theme="light"]) #my-svg.inline-svg .node p,
+    :root:not([data-theme="light"]) #my-svg.inline-svg .mindmap-node span,
+    :root:not([data-theme="light"]) #my-svg.inline-svg .node span {
+        fill: #e0e0e0 !important;
+        color: #e0e0e0 !important;
+    }
+    :root:not([data-theme="light"]) svg.inline-svg .cluster rect {
+        fill: #1a1a1a !important;
+        stroke: #555 !important;
+    }
+    :root:not([data-theme="light"]) svg.inline-svg .edgePath .path,
+    :root:not([data-theme="light"]) svg.inline-svg .edge-pattern-solid {
+        stroke: #ff6a00 !important;
+    }
+    :root:not([data-theme="light"]) svg.inline-svg .labelBkg,
+    :root:not([data-theme="light"]) svg.inline-svg .edgeLabel,
+    :root:not([data-theme="light"]) svg.inline-svg .edgeLabel p,
+    :root:not([data-theme="light"]) svg.inline-svg .edgeLabel rect {
+        fill: #1a1a1a !important;
+        background-color: #1a1a1a !important;
+    }
+    :root:not([data-theme="light"]) .footer {
+        background-color: #121212;
+        border-top: 1px solid #333;
+    }
+    :root:not([data-theme="light"]) :focus-visible {
+        outline-color: #ff914d;
+    }
+    :root:not([data-theme="light"]) .table-row-alt { background-color: #242424; }
+    :root:not([data-theme="light"]) {
+        --primary-text: #ff914d;
+    }
+    :root:not([data-theme="light"]) #theme-toggle .light-icon { display: inline; }
+    :root:not([data-theme="light"]) #theme-toggle .dark-icon { display: none; }
 }
 
 [data-theme="dark"] body {
@@ -628,6 +704,24 @@ body, .feature-card, .comparison-section, .comparison-table th, .comparison-tabl
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
+}
+
+.skip-link.focusable:focus-visible {
+    clip: auto;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background-color: var(--primary);
+    color: var(--on-primary);
+    padding: 12px 24px;
+    border-radius: 4px;
+    z-index: 9999;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 /* Theme Toggle State Fix */
