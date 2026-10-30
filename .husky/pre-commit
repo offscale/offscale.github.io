@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+# Pre-commit hook enforcing 100% doc coverage, strong typing, lint checks, 100% test coverage, and zero staged WASM binaries.
+set -e
+
+if git diff --cached --name-only | grep -q '^cdd-web-ui/assets/wasm/'; then
+    echo "ERROR: Attempted to commit compiled WASM assets in cdd-web-ui/assets/wasm/. See GEMINI.md." >&2
+    exit 1
+fi
+
+npm run typecheck
+npm run lint
+npm test

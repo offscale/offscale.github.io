@@ -1,0 +1,12 @@
+{
+  "extends": ["html-validate:recommended"],
+  "rules": {
+    "no-dup-id": "error",
+    "no-inline-style": "error",
+    "no-deprecated-attr": "error",
+    "wcag/h32": "off",
+    "no-trailing-whitespace": "off",
+    "void-style": "off",
+    "attr-quotes": "error"
+  }
+}

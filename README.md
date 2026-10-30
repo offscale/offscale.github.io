@@ -1,5 +1,7 @@
 # Offscale.github.io
 
+[![Deploy Web UI to GitHub Pages](https://github.com/offscale/offscale.github.io/actions/workflows/deploy-cdd-web-ui.yml/badge.svg)](https://github.com/offscale/offscale.github.io/actions/workflows/deploy-cdd-web-ui.yml)
+
 This repository hosts the source code for the **Offscale** landing page: [offscale.github.io](https://offscale.github.io).
 
 Offscale provides modern, rapid application tools, bringing "new compilers to 'solve' software."

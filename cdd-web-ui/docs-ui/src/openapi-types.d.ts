@@ -3,29 +3,45 @@
  * Custom TypeScript types for OpenAPI 3.2.0 Specification.
  */
 /**
+ * Represents any valid JSON primitive, array, or object value.
+ */
+export type JsonValue = string | number | boolean | null | JsonValue[] | {
+    [key: string]: JsonValue;
+};
+/**
+ * Standard HTTP methods supported on a PathItemObject in OpenAPI 3.2.0.
+ */
+export type HttpMethod = 'get' | 'put' | 'post' | 'delete' | 'options' | 'head' | 'patch' | 'trace' | 'query';
+/**
+ * Array of all standard HTTP methods supported on a PathItemObject.
+ */
+export declare const STANDARD_HTTP_METHODS: readonly HttpMethod[];
+/**
  * The root document object of the OpenAPI document.
  */
 export interface OpenAPI320 {
     /** The version of the OpenAPI Specification that the document uses. */
     openapi: string;
+    /** Optional canonical base URI for resolving relative references in OpenAPI 3.2.0. */
+    $self?: string | undefined;
     /** Provides metadata about the API. */
     info: InfoObject;
     /** The default value for the $schema keyword within Schema Objects. */
-    jsonSchemaDialect?: string;
+    jsonSchemaDialect?: string | undefined;
     /** An array of Server Objects, which provide connectivity information to a target server. */
-    servers?: ServerObject[];
+    servers?: ServerObject[] | undefined;
     /** The available paths and operations for the API. */
-    paths?: PathsObject;
+    paths?: PathsObject | undefined;
     /** The available webhooks that can be configured for this API. */
-    webhooks?: Record<string, PathItemObject | ReferenceObject>;
+    webhooks?: Record<string, PathItemObject | ReferenceObject> | undefined;
     /** An element to hold various schemas for the document. */
-    components?: ComponentsObject;
+    components?: ComponentsObject | undefined;
     /** A declaration of which security mechanisms can be used across the API. */
-    security?: SecurityRequirementObject[];
+    security?: SecurityRequirementObject[] | undefined;
     /** A list of tags used by the document with additional metadata. */
-    tags?: TagObject[];
+    tags?: TagObject[] | undefined;
     /** Additional external documentation. */
-    externalDocs?: ExternalDocumentationObject;
+    externalDocs?: ExternalDocumentationObject | undefined;
 }
 /**
  * The object provides metadata about the API.
@@ -34,15 +50,15 @@ export interface InfoObject {
     /** The title of the API. */
     title: string;
     /** A short summary of the API. */
-    summary?: string;
+    summary?: string | undefined;
     /** A description of the API. */
-    description?: string;
+    description?: string | undefined;
     /** A URL to the Terms of Service for the API. */
-    termsOfService?: string;
+    termsOfService?: string | undefined;
     /** The contact information for the exposed API. */
-    contact?: ContactObject;
+    contact?: ContactObject | undefined;
     /** The license information for the exposed API. */
-    license?: LicenseObject;
+    license?: LicenseObject | undefined;
     /** The version of the OpenAPI document. */
     version: string;
 }
@@ -51,11 +67,11 @@ export interface InfoObject {
  */
 export interface ContactObject {
     /** The identifying name of the contact person/organization. */
-    name?: string;
+    name?: string | undefined;
     /** The URL pointing to the contact information. */
-    url?: string;
+    url?: string | undefined;
     /** The email address of the contact person/organization. */
-    email?: string;
+    email?: string | undefined;
 }
 /**
  * License information for the exposed API.
@@ -64,9 +80,9 @@ export interface LicenseObject {
     /** The license name used for the API. */
     name: string;
     /** An SPDX license expression for the API. */
-    identifier?: string;
+    identifier?: string | undefined;
     /** A URL to the license used for the API. */
-    url?: string;
+    url?: string | undefined;
 }
 /**
  * An object representing a Server.
@@ -75,91 +91,91 @@ export interface ServerObject {
     /** A URL to the target host. */
     url: string;
     /** An optional string describing the host designated by the URL. */
-    description?: string;
+    description?: string | undefined;
     /** A map between a variable name and its value. */
-    variables?: Record<string, ServerVariableObject>;
+    variables?: Record<string, ServerVariableObject> | undefined;
 }
 /**
  * An object representing a Server Variable for server URL template substitution.
  */
 export interface ServerVariableObject {
     /** An enumeration of string values to be used if the substitution options are from a limited set. */
-    enum?: string[];
+    enum?: string[] | undefined;
     /** The default value to use for substitution. */
     default: string;
     /** An optional description for the server variable. */
-    description?: string;
+    description?: string | undefined;
 }
 /**
  * Holds the relative paths to the individual endpoints and their operations.
  */
 export interface PathsObject {
-    /** A relative path to an individual endpoint. */
-    [path: string]: PathItemObject;
+    /** A relative path to an individual endpoint or reference. */
+    [path: string]: PathItemObject | ReferenceObject;
 }
 /**
  * Describes the operations available on a single path.
  */
 export interface PathItemObject {
     /** Allows for a reference to a definition. */
-    $ref?: string;
+    $ref?: string | undefined;
     /** An optional, string summary, intended to apply to all operations in this path. */
-    summary?: string;
+    summary?: string | undefined;
     /** An optional, string description, intended to apply to all operations in this path. */
-    description?: string;
+    description?: string | undefined;
     /** A definition of a GET operation on this path. */
-    get?: OperationObject;
+    get?: OperationObject | undefined;
     /** A definition of a PUT operation on this path. */
-    put?: OperationObject;
+    put?: OperationObject | undefined;
     /** A definition of a POST operation on this path. */
-    post?: OperationObject;
+    post?: OperationObject | undefined;
     /** A definition of a DELETE operation on this path. */
-    delete?: OperationObject;
+    delete?: OperationObject | undefined;
     /** A definition of an OPTIONS operation on this path. */
-    options?: OperationObject;
+    options?: OperationObject | undefined;
     /** A definition of a HEAD operation on this path. */
-    head?: OperationObject;
+    head?: OperationObject | undefined;
     /** A definition of a PATCH operation on this path. */
-    patch?: OperationObject;
+    patch?: OperationObject | undefined;
     /** A definition of a TRACE operation on this path. */
-    trace?: OperationObject;
+    trace?: OperationObject | undefined;
     /** A definition of a QUERY operation on this path. */
-    query?: OperationObject;
+    query?: OperationObject | undefined;
     /** A map of custom HTTP methods to subcommands. */
-    additionalOperations?: Record<string, OperationObject>;
+    additionalOperations?: Record<string, OperationObject> | undefined;
     /** An alternative server array to service all operations in this path. */
-    servers?: ServerObject[];
+    servers?: ServerObject[] | undefined;
     /** A list of parameters that are applicable for all the operations described under this path. */
-    parameters?: (ParameterObject | ReferenceObject)[];
+    parameters?: (ParameterObject | ReferenceObject)[] | undefined;
 }
 /**
  * Describes a single API operation on a path.
  */
 export interface OperationObject {
     /** A list of tags for API documentation control. */
-    tags?: string[];
+    tags?: string[] | undefined;
     /** A short summary of what the operation does. */
-    summary?: string;
+    summary?: string | undefined;
     /** A verbose explanation of the operation behavior. */
-    description?: string;
+    description?: string | undefined;
     /** Additional external documentation for this operation. */
-    externalDocs?: ExternalDocumentationObject;
+    externalDocs?: ExternalDocumentationObject | undefined;
     /** Unique string used to identify the operation. */
-    operationId?: string;
+    operationId?: string | undefined;
     /** A list of parameters that are applicable for this operation. */
-    parameters?: (ParameterObject | ReferenceObject)[];
+    parameters?: (ParameterObject | ReferenceObject)[] | undefined;
     /** The request body applicable for this operation. */
-    requestBody?: RequestBodyObject | ReferenceObject;
+    requestBody?: RequestBodyObject | ReferenceObject | undefined;
     /** The list of possible responses as they are returned from executing this operation. */
-    responses?: ResponsesObject;
+    responses?: ResponsesObject | undefined;
     /** A map of possible out-of band callbacks related to the parent operation. */
-    callbacks?: Record<string, CallbackObject | ReferenceObject>;
+    callbacks?: Record<string, CallbackObject | ReferenceObject> | undefined;
     /** Declares this operation to be deprecated. */
-    deprecated?: boolean;
+    deprecated?: boolean | undefined;
     /** A declaration of which security mechanisms can be used for this operation. */
-    security?: SecurityRequirementObject[];
+    security?: SecurityRequirementObject[] | undefined;
     /** An alternative server array to service this operation. */
-    servers?: ServerObject[];
+    servers?: ServerObject[] | undefined;
 }
 /**
  * Describes a single operation parameter.
@@ -170,83 +186,83 @@ export interface ParameterObject {
     /** The location of the parameter. */
     in: 'query' | 'header' | 'path' | 'cookie';
     /** A brief description of the parameter. */
-    description?: string;
+    description?: string | undefined;
     /** Determines whether this parameter is mandatory. */
-    required?: boolean;
+    required?: boolean | undefined;
     /** Specifies that a parameter is deprecated and SHOULD be transitioned out of usage. */
-    deprecated?: boolean;
+    deprecated?: boolean | undefined;
     /** Sets the ability to pass empty-valued parameters. */
-    allowEmptyValue?: boolean;
+    allowEmptyValue?: boolean | undefined;
     /** Describes how the parameter value will be serialized. */
-    style?: string;
+    style?: string | undefined;
     /** When this is true, parameter values of type array or object generate separate parameters. */
-    explode?: boolean;
+    explode?: boolean | undefined;
     /** Determines whether the parameter value SHOULD allow reserved characters. */
-    allowReserved?: boolean;
+    allowReserved?: boolean | undefined;
     /** The schema defining the type used for the parameter. */
-    schema?: SchemaObject | ReferenceObject;
+    schema?: SchemaObject | ReferenceObject | undefined;
     /** Example of the parameter's potential value. */
-    example?: any;
+    example?: JsonValue | undefined;
     /** Examples of the parameter's potential value. */
-    examples?: Record<string, ExampleObject | ReferenceObject>;
+    examples?: Record<string, ExampleObject | ReferenceObject> | undefined;
     /** A map containing the representations for the parameter. */
-    content?: Record<string, MediaTypeObject>;
+    content?: Record<string, MediaTypeObject> | undefined;
 }
 /**
  * Describes a single request body.
  */
 export interface RequestBodyObject {
     /** A brief description of the request body. */
-    description?: string;
+    description?: string | undefined;
     /** The content of the request body. */
     content: Record<string, MediaTypeObject>;
     /** Determines if the request body is required in the request. */
-    required?: boolean;
+    required?: boolean | undefined;
 }
 /**
  * Each Media Type Object provides schema and examples for the media type identified by its key.
  */
 export interface MediaTypeObject {
     /** The schema defining the content of the request, response, or parameter. */
-    schema?: SchemaObject | ReferenceObject;
+    schema?: SchemaObject | ReferenceObject | undefined;
     /** The schema defining the content of the items of an array. */
-    itemSchema?: SchemaObject | ReferenceObject;
+    itemSchema?: SchemaObject | ReferenceObject | undefined;
     /** Example of the media type. */
-    example?: any;
+    example?: JsonValue | undefined;
     /** Examples of the media type. */
-    examples?: Record<string, ExampleObject | ReferenceObject>;
+    examples?: Record<string, ExampleObject | ReferenceObject> | undefined;
     /** A map between a property name and its encoding information. */
-    encoding?: Record<string, EncodingObject>;
+    encoding?: Record<string, EncodingObject> | undefined;
     /** A map between a property name and its encoding information for prefix. */
-    prefixEncoding?: Record<string, EncodingObject>;
+    prefixEncoding?: Record<string, EncodingObject> | undefined;
     /** A map between a property name and its encoding information for array items. */
-    itemEncoding?: Record<string, EncodingObject>;
+    itemEncoding?: Record<string, EncodingObject> | undefined;
 }
 /**
  * A single encoding definition applied to a single schema property.
  */
 export interface EncodingObject {
     /** The Content-Type for encoding a specific property. */
-    contentType?: string;
+    contentType?: string | undefined;
     /** A map allowing additional information to be provided as headers. */
-    headers?: Record<string, HeaderObject | ReferenceObject>;
+    headers?: Record<string, HeaderObject | ReferenceObject> | undefined;
     /** Describes how a specific property value will be serialized. */
-    style?: string;
+    style?: string | undefined;
     /** When this is true, property values of type array or object generate separate parameters. */
-    explode?: boolean;
+    explode?: boolean | undefined;
     /** Determines whether the parameter value SHOULD allow reserved characters. */
-    allowReserved?: boolean;
+    allowReserved?: boolean | undefined;
     /** A map between a property name and its encoding information for prefix. */
-    prefixEncoding?: Record<string, EncodingObject>;
+    prefixEncoding?: Record<string, EncodingObject> | undefined;
     /** A map between a property name and its encoding information for array items. */
-    itemEncoding?: Record<string, EncodingObject>;
+    itemEncoding?: Record<string, EncodingObject> | undefined;
 }
 /**
  * A container for the expected responses of an operation.
  */
 export interface ResponsesObject {
     /** The documentation of responses other than the ones declared for specific HTTP response codes. */
-    default?: ResponseObject | ReferenceObject;
+    default?: ResponseObject | ReferenceObject | undefined;
     /** Any HTTP status code can be used as the property name. */
     [statusCode: string]: ResponseObject | ReferenceObject | undefined;
 }
@@ -257,11 +273,11 @@ export interface ResponseObject {
     /** A description of the response. */
     description: string;
     /** Maps a header name to its definition. */
-    headers?: Record<string, HeaderObject | ReferenceObject>;
+    headers?: Record<string, HeaderObject | ReferenceObject> | undefined;
     /** A map containing descriptions of potential response payloads. */
-    content?: Record<string, MediaTypeObject>;
+    content?: Record<string, MediaTypeObject> | undefined;
     /** A map of operations links that can be followed from the response. */
-    links?: Record<string, LinkObject | ReferenceObject>;
+    links?: Record<string, LinkObject | ReferenceObject> | undefined;
 }
 /**
  * A map of possible out-of band callbacks related to the parent operation.
@@ -275,30 +291,30 @@ export interface CallbackObject {
  */
 export interface ExampleObject {
     /** Short description for the example. */
-    summary?: string;
+    summary?: string | undefined;
     /** Embedded literal description of the example. */
-    description?: string;
+    description?: string | undefined;
     /** Embedded literal example. */
-    value?: any;
+    value?: JsonValue | undefined;
     /** A URL that points to the literal example. */
-    externalValue?: string;
+    externalValue?: string | undefined;
 }
 /**
  * The Link object represents a possible design-time link for a response.
  */
 export interface LinkObject {
     /** A relative or absolute URI reference to an OAS operation. */
-    operationRef?: string;
+    operationRef?: string | undefined;
     /** The name of an existing, resolvable OAS operation, as defined with a unique operationId. */
-    operationId?: string;
+    operationId?: string | undefined;
     /** A map representing parameters to pass to an operation as specified with operationId or identified via operationRef. */
-    parameters?: Record<string, any>;
+    parameters?: Record<string, JsonValue> | undefined;
     /** A literal value or {expression} to use as a request body when calling the target operation. */
-    requestBody?: any;
+    requestBody?: JsonValue | undefined;
     /** A description of the link. */
-    description?: string;
+    description?: string | undefined;
     /** A server object to be used by the target operation. */
-    server?: ServerObject;
+    server?: ServerObject | undefined;
 }
 /**
  * The Header Object follows the structure of the Parameter Object with name and in excluded.
@@ -312,15 +328,15 @@ export interface TagObject {
     /** The name of the tag. */
     name: string;
     /** A short summary for the tag. */
-    summary?: string;
+    summary?: string | undefined;
     /** A short description for the tag. */
-    description?: string;
+    description?: string | undefined;
     /** Additional external documentation for this tag. */
-    externalDocs?: ExternalDocumentationObject;
+    externalDocs?: ExternalDocumentationObject | undefined;
     /** Nested subcommand groups. */
-    parent?: string;
+    parent?: string | undefined;
     /** Subcommand grouping logic. */
-    kind?: string;
+    kind?: string | undefined;
 }
 /**
  * A simple object to allow referencing other components in the specification, internally and externally.
@@ -329,84 +345,84 @@ export interface ReferenceObject {
     /** The reference string. */
     $ref: string;
     /** A short summary which by default SHOULD override that of the referenced component. */
-    summary?: string;
+    summary?: string | undefined;
     /** A description which by default SHOULD override that of the referenced component. */
-    description?: string;
+    description?: string | undefined;
 }
 /**
  * The Schema Object allows the definition of input and output data types.
  */
 export interface SchemaObject {
     /** The title of the schema. */
-    title?: string;
+    title?: string | undefined;
     /** A value that the instance must be a multiple of. */
-    multipleOf?: number;
+    multipleOf?: number | undefined;
     /** The maximum value for a number. */
-    maximum?: number;
+    maximum?: number | undefined;
     /** Whether the maximum value is exclusive. */
-    exclusiveMaximum?: boolean;
+    exclusiveMaximum?: boolean | undefined;
     /** The minimum value for a number. */
-    minimum?: number;
+    minimum?: number | undefined;
     /** Whether the minimum value is exclusive. */
-    exclusiveMinimum?: boolean;
+    exclusiveMinimum?: boolean | undefined;
     /** The maximum length of a string. */
-    maxLength?: number;
+    maxLength?: number | undefined;
     /** The minimum length of a string. */
-    minLength?: number;
+    minLength?: number | undefined;
     /** A regular expression that the string must match. */
-    pattern?: string;
+    pattern?: string | undefined;
     /** The maximum number of items in an array. */
-    maxItems?: number;
+    maxItems?: number | undefined;
     /** The minimum number of items in an array. */
-    minItems?: number;
+    minItems?: number | undefined;
     /** Whether the items in an array must be unique. */
-    uniqueItems?: boolean;
+    uniqueItems?: boolean | undefined;
     /** The maximum number of properties in an object. */
-    maxProperties?: number;
+    maxProperties?: number | undefined;
     /** The minimum number of properties in an object. */
-    minProperties?: number;
+    minProperties?: number | undefined;
     /** The list of required properties for an object. */
-    required?: string[];
+    required?: string[] | undefined;
     /** A list of valid values for the instance. */
-    enum?: any[];
+    enum?: JsonValue[] | undefined;
     /** The data type of the instance. */
-    type?: string;
+    type?: string | undefined;
     /** An array of schemas that the instance must match all of. */
-    allOf?: (SchemaObject | ReferenceObject)[];
+    allOf?: (SchemaObject | ReferenceObject)[] | undefined;
     /** An array of schemas that the instance must match one of. */
-    oneOf?: (SchemaObject | ReferenceObject)[];
+    oneOf?: (SchemaObject | ReferenceObject)[] | undefined;
     /** An array of schemas that the instance must match any of. */
-    anyOf?: (SchemaObject | ReferenceObject)[];
+    anyOf?: (SchemaObject | ReferenceObject)[] | undefined;
     /** A schema that the instance must not match. */
-    not?: SchemaObject | ReferenceObject;
+    not?: SchemaObject | ReferenceObject | undefined;
     /** The schema for items in an array. */
-    items?: SchemaObject | ReferenceObject;
+    items?: SchemaObject | ReferenceObject | undefined;
     /** The properties of an object. */
-    properties?: Record<string, SchemaObject | ReferenceObject>;
+    properties?: Record<string, SchemaObject | ReferenceObject> | undefined;
     /** The schema for additional properties in an object. */
-    additionalProperties?: SchemaObject | ReferenceObject | boolean;
+    additionalProperties?: SchemaObject | ReferenceObject | boolean | undefined;
     /** A description of the schema. */
-    description?: string;
+    description?: string | undefined;
     /** The format of the data. */
-    format?: string;
+    format?: string | undefined;
     /** The default value for the schema. */
-    default?: any;
+    default?: JsonValue | undefined;
     /** Whether the value can be null. */
-    nullable?: boolean;
+    nullable?: boolean | undefined;
     /** Adds support for polymorphism. */
-    discriminator?: DiscriminatorObject;
+    discriminator?: DiscriminatorObject | undefined;
     /** Whether the value is read-only. */
-    readOnly?: boolean;
+    readOnly?: boolean | undefined;
     /** Whether the value is write-only. */
-    writeOnly?: boolean;
+    writeOnly?: boolean | undefined;
     /** Adds additional metadata to describe the XML representation of this property. */
-    xml?: XMLObject;
+    xml?: XMLObject | undefined;
     /** Additional external documentation for this schema. */
-    externalDocs?: ExternalDocumentationObject;
+    externalDocs?: ExternalDocumentationObject | undefined;
     /** A free-form property to include an example of an instance for this schema. */
-    example?: any;
+    example?: JsonValue | undefined;
     /** Specifies that a schema is deprecated and SHOULD be transitioned out of usage. */
-    deprecated?: boolean;
+    deprecated?: boolean | undefined;
 }
 /**
  * Adds support for polymorphism.
@@ -415,26 +431,26 @@ export interface DiscriminatorObject {
     /** The name of the property in the payload that will hold the discriminator value. */
     propertyName: string;
     /** An object to hold mappings between payload values and schema names or references. */
-    mapping?: Record<string, string>;
+    mapping?: Record<string, string> | undefined;
     /** Fallback default mapping. */
-    defaultMapping?: string;
+    defaultMapping?: string | undefined;
 }
 /**
  * A metadata object that allows for more fine-tuned XML model definitions.
  */
 export interface XMLObject {
     /** Replaces the name of the element/attribute used for the described schema property. */
-    name?: string;
+    name?: string | undefined;
     /** The URI of the namespace definition. */
-    namespace?: string;
+    namespace?: string | undefined;
     /** The prefix to be used for the name. */
-    prefix?: string;
+    prefix?: string | undefined;
     /** Declares whether the property definition translates to an element attribute instead of an element. */
-    attribute?: boolean;
+    attribute?: boolean | undefined;
     /** MAY be used only for an array definition. */
-    wrapped?: boolean;
+    wrapped?: boolean | undefined;
     /** Precise XML DOM mapping controls. */
-    nodeType?: string;
+    nodeType?: string | undefined;
 }
 /**
  * Lists the required security schemes to execute this operation.
@@ -448,27 +464,27 @@ export interface SecurityRequirementObject {
  */
 export interface ComponentsObject {
     /** An object to hold reusable Schema Objects. */
-    schemas?: Record<string, SchemaObject | ReferenceObject>;
+    schemas?: Record<string, SchemaObject | ReferenceObject> | undefined;
     /** An object to hold reusable Response Objects. */
-    responses?: Record<string, ResponseObject | ReferenceObject>;
+    responses?: Record<string, ResponseObject | ReferenceObject> | undefined;
     /** An object to hold reusable Parameter Objects. */
-    parameters?: Record<string, ParameterObject | ReferenceObject>;
+    parameters?: Record<string, ParameterObject | ReferenceObject> | undefined;
     /** An object to hold reusable Example Objects. */
-    examples?: Record<string, ExampleObject | ReferenceObject>;
+    examples?: Record<string, ExampleObject | ReferenceObject> | undefined;
     /** An object to hold reusable Request Body Objects. */
-    requestBodies?: Record<string, RequestBodyObject | ReferenceObject>;
+    requestBodies?: Record<string, RequestBodyObject | ReferenceObject> | undefined;
     /** An object to hold reusable Header Objects. */
-    headers?: Record<string, HeaderObject | ReferenceObject>;
+    headers?: Record<string, HeaderObject | ReferenceObject> | undefined;
     /** An object to hold reusable Security Scheme Objects. */
-    securitySchemes?: Record<string, SecuritySchemeObject | ReferenceObject>;
+    securitySchemes?: Record<string, SecuritySchemeObject | ReferenceObject> | undefined;
     /** An object to hold reusable Link Objects. */
-    links?: Record<string, LinkObject | ReferenceObject>;
+    links?: Record<string, LinkObject | ReferenceObject> | undefined;
     /** An object to hold reusable Callback Objects. */
-    callbacks?: Record<string, CallbackObject | ReferenceObject>;
+    callbacks?: Record<string, CallbackObject | ReferenceObject> | undefined;
     /** An object to hold reusable Path Item Objects. */
-    pathItems?: Record<string, PathItemObject | ReferenceObject>;
+    pathItems?: Record<string, PathItemObject | ReferenceObject> | undefined;
     /** An object to hold reusable Media Type Objects. */
-    mediaTypes?: Record<string, MediaTypeObject | ReferenceObject>;
+    mediaTypes?: Record<string, MediaTypeObject | ReferenceObject> | undefined;
 }
 /**
  * Defines a security scheme that can be used by the operations.
@@ -477,58 +493,58 @@ export interface SecuritySchemeObject {
     /** The type of the security scheme. */
     type: 'apiKey' | 'http' | 'mutualTLS' | 'oauth2' | 'openIdConnect';
     /** A short description for security scheme. */
-    description?: string;
+    description?: string | undefined;
     /** The name of the header, query or cookie parameter to be used. */
-    name?: string;
+    name?: string | undefined;
     /** The location of the API key. */
-    in?: 'query' | 'header' | 'cookie';
+    in?: 'query' | 'header' | 'cookie' | undefined;
     /** The name of the HTTP Authorization scheme to be used in the Authorization header as defined in RFC7235. */
-    scheme?: string;
+    scheme?: string | undefined;
     /** A hint to the client to identify how the bearer token is formatted. */
-    bearerFormat?: string;
+    bearerFormat?: string | undefined;
     /** An object containing configuration information for the flow types supported. */
-    flows?: OAuthFlowsObject;
+    flows?: OAuthFlowsObject | undefined;
     /** OpenId Connect URL to discover OAuth2 configuration values. */
-    openIdConnectUrl?: string;
+    openIdConnectUrl?: string | undefined;
     /** OAuth2 metadata discovery. */
-    oauth2MetadataUrl?: string;
+    oauth2MetadataUrl?: string | undefined;
 }
 /**
  * Allows configuration of the supported OAuth Flows.
  */
 export interface OAuthFlowsObject {
     /** Configuration for the OAuth Implicit flow. */
-    implicit?: OAuthFlowObject;
+    implicit?: OAuthFlowObject | undefined;
     /** Configuration for the OAuth Resource Owner Password flow. */
-    password?: OAuthFlowObject;
+    password?: OAuthFlowObject | undefined;
     /** Configuration for the OAuth Client Credentials flow. */
-    clientCredentials?: OAuthFlowObject;
+    clientCredentials?: OAuthFlowObject | undefined;
     /** Configuration for the OAuth Authorization Code flow. */
-    authorizationCode?: OAuthFlowObject;
+    authorizationCode?: OAuthFlowObject | undefined;
     /** Support for the Device Authorization grant flow. */
-    deviceAuthorization?: OAuthFlowObject;
+    deviceAuthorization?: OAuthFlowObject | undefined;
 }
 /**
  * Configuration details for a supported OAuth Flow.
  */
 export interface OAuthFlowObject {
     /** The authorization URL to be used for this flow. */
-    authorizationUrl?: string;
+    authorizationUrl?: string | undefined;
     /** The token URL to be used for this flow. */
-    tokenUrl?: string;
+    tokenUrl?: string | undefined;
     /** The URL to be used for obtaining refresh tokens. */
-    refreshUrl?: string;
+    refreshUrl?: string | undefined;
     /** The available scopes for the OAuth2 security scheme. */
     scopes: Record<string, string>;
     /** URL to be used for device flow authentication. */
-    deviceAuthorizationUrl?: string;
+    deviceAuthorizationUrl?: string | undefined;
 }
 /**
  * Allows referencing an external resource for extended documentation.
  */
 export interface ExternalDocumentationObject {
     /** A short description of the target documentation. */
-    description?: string;
+    description?: string | undefined;
     /** The URL for the target documentation. */
     url: string;
 }

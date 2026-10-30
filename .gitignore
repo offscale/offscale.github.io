@@ -11,6 +11,7 @@ ml.svg
 c_multiplatform.svg
 sdk_cli_docs.svg
 interactive_docs.svg
+openapi.svg
 
 # Temporary files
 1.html
@@ -22,9 +23,8 @@ __pycache__/
 *.py[cod]
 *.class
 
-openapi.svg
+# Build & Coverage Artifacts
 cdd-web-ui/assets/wasm/
 cdd-web-ui/browser/
-node_modules/
 dist/
 coverage/

@@ -7,7 +7,14 @@
     "test": "jest",
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint styles.css",
+    "lint:html": "html-validate index.html ecosystem.html",
+    "lint:sh": "shellcheck mmd_gen.sh",
+    "lint": "npm run typecheck && npm run lint:js && npm run lint:css && npm run lint:html && npm run lint:sh",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -22,8 +29,21 @@
   },
   "homepage": "https://github.com/offscale/offscale.github.io#readme",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^26.6.6",
+    "eslint": "^10.14.0",
+    "eslint-plugin-jsdoc": "^65.4.2",
+    "globals": "^17.13.0",
+    "html-validate": "^11.17.0",
+    "husky": "^9.1.7",
     "jest": "^30.4.2",
     "jest-environment-jsdom": "^30.4.1",
+    "lint-staged": "^17.6.0",
+    "stylelint": "^17.16.0",
+    "stylelint-config-standard": "^40.0.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1",
     "vite": "^8.0.16"
   }
 }
