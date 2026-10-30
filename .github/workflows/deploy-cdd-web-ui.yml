@@ -28,29 +28,22 @@ jobs:
           repository: SamuelMarks/cdd-web-ui
           path: cdd-web-ui
 
+      - name: Checkout cdd-browser-sdk
+        uses: actions/checkout@v7
+        with:
+          repository: SamuelMarks/cdd-browser-sdk
+          path: cdd-browser-sdk
+
       - name: Checkout cdd-docs-ui
         uses: actions/checkout@v7
         with:
           repository: SamuelMarks/cdd-docs-ui
           path: cdd-docs-ui
 
-      - name: Checkout cdd-ctl
-        uses: actions/checkout@v7
-        with:
-          repository: SamuelMarks/cdd-ctl
-          path: cdd-ctl
-
-      - name: Checkout cdd-openapi-test-harness
-        uses: actions/checkout@v7
-        with:
-          repository: SamuelMarks/cdd-openapi-test-harness
-          path: cdd-openapi-test-harness
-          submodules: recursive
-
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
-          node-version: 20
+          node-version: 'lts/*'
 
       - name: Validate and Test Main Site (offscale.github.io)
         working-directory: ./main-site
@@ -63,68 +56,34 @@ jobs:
       - name: Install Binaryen
         run: sudo apt-get update && sudo apt-get install -y binaryen
 
-      - name: Build cdd-java-cli
-        working-directory: ./cdd-openapi-test-harness/cdd-java
+      - name: Build cdd-browser-sdk
+        working-directory: ./cdd-browser-sdk
         run: |
-          git checkout master
-          git pull origin master
-          cd package
-          npm install --ignore-scripts
+          npm ci --ignore-scripts
           npm run build
-
-      - name: Build WASM SDK
-        working-directory: ./cdd-ctl/cdd-ctl-wasm-sdk
-        run: |
-          npm install --ignore-scripts
-          npm run build
-
-      - name: Fetch and Optimize WASM Binaries
-        working-directory: ./cdd-ctl
-        run: |
-          chmod +x ./scripts/fetch_wasm.sh
-          ./scripts/fetch_wasm.sh
-
-          mkdir -p ./optimized-wasm
-          for wasm_file in cdd-ctl-wasm-sdk/assets/wasm/*.wasm; do
-            filename=$(basename "$wasm_file")
-            echo "Optimizing $filename..."
-            wasm-opt -O3 "$wasm_file" -o "./optimized-wasm/$filename" || cp "$wasm_file" "./optimized-wasm/$filename"
-          done
-
-          # Download JS Wrappers and C# Zip with explicit failure reporting and retries
-          curl -fsSL --retry 3 -o ./optimized-wasm/cdd-ts.js "https://github.com/offscale/cdd-ts/releases/latest/download/cdd-ts.js"
-          curl -fsSL --retry 3 -o ./optimized-wasm/cdd-ts-javy.wasm "https://github.com/offscale/cdd-ts/releases/latest/download/cdd-ts-javy.wasm"
-          curl -fsSL --retry 3 -o ./optimized-wasm/cdd-java.js "https://github.com/SamuelMarks/cdd-java/releases/latest/download/cdd-java.js"
-          curl -fsSL --retry 3 -o ./cdd-csharp-wasm.zip "https://github.com/SamuelMarks/cdd-csharp/releases/latest/download/cdd-csharp-wasm.zip"
-          curl -fsSL --retry 3 -o ./optimized-wasm/openapi_python_client-0.0.1-py3-none-any.whl "https://github.com/offscale/cdd-python-all/releases/latest/download/openapi_python_client-0.0.1-py3-none-any.whl"
-
-          # Enable python-all, java, and ts in wasm-support.json only after verifying downloads succeeded
-          test -s ./optimized-wasm/openapi_python_client-0.0.1-py3-none-any.whl
-          test -s ./optimized-wasm/cdd-java.js
-          test -s ./optimized-wasm/cdd-ts.js
-          test -s ./optimized-wasm/cdd-ts-javy.wasm
-          sed -i 's/"python-all": false/"python-all": true/g' cdd-ctl-wasm-sdk/assets/wasm-support.json
-          sed -i 's/"java": false/"java": true/g' cdd-ctl-wasm-sdk/assets/wasm-support.json
-          sed -i 's/"ts": false/"ts": true/g' cdd-ctl-wasm-sdk/assets/wasm-support.json
 
       - name: Build cdd-docs-ui
         working-directory: ./cdd-docs-ui
         run: |
-          npm install --ignore-scripts
+          npm ci --ignore-scripts
           npm run build
 
       - name: Install UI Dependencies
         working-directory: ./cdd-web-ui
-        run: npm ci --ignore-scripts
+        run: npm install --ignore-scripts
 
-      - name: Copy WASM Binaries to Web UI
+      - name: Fetch and Optimize WASM Binaries
+        working-directory: ./cdd-web-ui
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mkdir -p cdd-web-ui/public/assets/wasm/
-          cp cdd-ctl/optimized-wasm/*.wasm cdd-web-ui/public/assets/wasm/
-          cp cdd-ctl/optimized-wasm/*.js cdd-web-ui/public/assets/wasm/
-          cp cdd-ctl/optimized-wasm/*.whl cdd-web-ui/public/assets/wasm/
-          unzip -q -o cdd-ctl/cdd-csharp-wasm.zip -d cdd-web-ui/public/assets/wasm/
-          cp cdd-ctl/cdd-ctl-wasm-sdk/assets/wasm-support.json cdd-web-ui/public/assets/wasm-support.json
+          npm run build:wasm
+          for wasm_file in public/assets/wasm/*.wasm; do
+            [ -f "$wasm_file" ] || continue
+            filename=$(basename "$wasm_file")
+            echo "Optimizing $filename..."
+            wasm-opt -O3 "$wasm_file" -o "${wasm_file}.opt" && mv "${wasm_file}.opt" "$wasm_file" || rm -f "${wasm_file}.opt"
+          done
 
       - name: Compute base-href and Build Angular App
         working-directory: ./cdd-web-ui
