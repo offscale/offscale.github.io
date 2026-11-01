@@ -493,5 +493,30 @@ describe('Theme Toggler Unit & Integration Suite', () => {
                 cleanup();
             });
         }
+
+        it('ensures all cdd-web-ui icon references resolve relative to base href and exist on disk', () => {
+            const cddDir = path.join(__dirname, 'cdd-web-ui');
+            const chunkFiles = fs
+                .readdirSync(cddDir)
+                .filter((name) => name.endsWith('.js'));
+            const iconRefs = new Set();
+
+            for (const file of chunkFiles) {
+                const content = fs.readFileSync(path.join(cddDir, file), 'utf8');
+                expect(content).not.toContain('/assets/icons/');
+                const matches = content.match(/assets\/icons\/[a-z0-9_-]+\.svg/gi);
+                if (matches) {
+                    for (const match of matches) {
+                        iconRefs.add(match);
+                    }
+                }
+            }
+
+            expect(iconRefs.has('assets/icons/google.svg')).toBe(true);
+            expect(iconRefs.has('assets/icons/openapi.svg')).toBe(true);
+            for (const relPath of iconRefs) {
+                expect(fs.existsSync(path.join(cddDir, relPath))).toBe(true);
+            }
+        });
     });
 });

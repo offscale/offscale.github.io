@@ -1,1 +1,0 @@
-import{A as Er,_ as C,tr as k}from"./chunk-BtZ2T9wB.js";var d=new k(`WINDOW`,{providedIn:`root`,factory:()=>C(Er).defaultView});var i=new k(`GLOBAL_DATE`,{providedIn:`root`,factory:()=>{let t=C(Er).defaultView;return t?t.Date:Date}});export{i as n,d as t};

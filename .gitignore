@@ -6,12 +6,12 @@ npm-debug.log
 
 # Auto-generated diagrams
 *.mmd
-deploy.svg
-ml.svg
-c_multiplatform.svg
-sdk_cli_docs.svg
-interactive_docs.svg
-openapi.svg
+/deploy.svg
+/ml.svg
+/c_multiplatform.svg
+/sdk_cli_docs.svg
+/interactive_docs.svg
+/openapi.svg
 
 # Temporary files
 1.html
