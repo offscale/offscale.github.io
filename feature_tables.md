@@ -26,13 +26,13 @@ Your key differentiators are:
 | PHP               | ✅ Yes      | ✅ Yes      | ✅ Yes      | ✅ Yes        |
 | Ruby              | ✅ Yes      | ✅ Yes      | ✅ Yes      | ✅ Yes        |
 | Kotlin            | ✅ Yes      | ❌ No       | ✅ Yes      | ❌ No         |
-| Rust              | ✅ Yes      | ❌ No       | ❌ No       | ❌ No         |
-| Swift             | ✅ Yes      | ❌ No       | ❌ No       | ❌ No         |
+| Rust              | ✅ Yes      | ❌ No       | ❌ No       | ✅ Yes        |
+| Swift             | ✅ Yes      | ❌ No       | ❌ No       | ✅ Yes        |
 | C++               | ✅ Yes      | ❌ No       | ❌ No       | ❌ No         |
 | C                 | ✅ Yes      | ❌ No       | ❌ No       | ❌ No         |
 | Shell / Bash      | ✅ Yes      | ❌ No       | ❌ No       | ❌ No         |
 +-------------------+-------------+-------------+-------------+---------------+
-| Total Supported   | 13          | 7           | 8           | 6             |
+| Total Supported   | 13          | 7           | 8           | 9             |
 +-------------------+-------------+-------------+-------------+---------------+
 ```
 
@@ -48,13 +48,13 @@ Your key differentiators are:
 | Feature                 | Offscale    | Speakeasy   | Stainless   | Fern    |
 +-------------------------+-------------+-------------+-------------+---------+
 | OpenAPI to Typed SDK    | ✅ Yes      | ✅ Yes      | ✅ Yes      | ✅ Yes  |
-| CLI Code Generation     | ✅ Yes      | ✅ Yes      | ❌ No       | ❌ No   |
+| CLI Code Generation     | ✅ Yes      | ✅ Yes      | ✅ Yes      | ✅ Yes  |
 | Auto-Publish Packages*  | ✅ Free     | 💰 Paid     | 💰 Paid     | 💰 Paid |
 | Static HTML Docs        | ✅ Yes      | ❌ Hosted   | ❌ Hosted   | ❌ Host |
 | 13-Language Snippets    | ✅ Yes      | ❌ Partial  | ❌ Partial  | ❌ Part |
-| Interactive API Testing | ✅ Yes      | ❌ No       | ❌ No       | ✅ Yes  |
-| Terraform Generation    | ❌ No       | ✅ Yes      | ✅ Yes      | ❌ No   |
-| MCP Integration         | ❌ No       | ✅ Yes      | ✅ Yes      | ❌ No   |
+| Interactive API Testing | ✅ Yes      | ❌ No       | ✅ Yes      | ✅ Yes  |
+| Terraform Generation    | ❌ No       | ✅ Yes      | ✅ Yes      | ✅ Yes  |
+| MCP Integration         | ✅ Yes      | ✅ Yes      | ✅ Yes      | ✅ Yes  |
 +-------------------------+-------------+-------------+-------------+---------+
 * PyPI, npm, crates.io, Maven, RubyGems, etc.
 ```

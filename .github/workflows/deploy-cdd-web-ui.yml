@@ -95,6 +95,12 @@ jobs:
         run: |
           rm -rf main-site/cdd-web-ui
           cp -r cdd-web-ui/dist/cdd-web-ui/browser main-site/cdd-web-ui
+          cp main-site/cdd-web-ui/index.html main-site/cdd-web-ui/404.html
+          cp main-site/cdd-web-ui/index.html main-site/404.html
+          for route in workspace login auth-callback dashboard dashboard/organizations dashboard/repositories dashboard/secrets dashboard/audit-logs; do
+            mkdir -p "main-site/cdd-web-ui/$route"
+            cp main-site/cdd-web-ui/index.html "main-site/cdd-web-ui/$route/index.html"
+          done
 
       - name: Setup Pages
         uses: actions/configure-pages@v6

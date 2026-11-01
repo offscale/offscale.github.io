@@ -518,5 +518,32 @@ describe('Theme Toggler Unit & Integration Suite', () => {
                 expect(fs.existsSync(path.join(cddDir, relPath))).toBe(true);
             }
         });
+
+        it('ensures SPA deep-link routes (e.g. /cdd-web-ui/login) and 404 fallbacks exist with matching index.html and base href', () => {
+            const cddDir = path.join(__dirname, 'cdd-web-ui');
+            const rootIndex = fs.readFileSync(
+                path.join(cddDir, 'index.html'),
+                'utf8'
+            );
+            expect(rootIndex).toContain('<base href="/cdd-web-ui/">');
+
+            const fallbackPaths = [
+                path.join(__dirname, '404.html'),
+                path.join(cddDir, '404.html'),
+                path.join(cddDir, 'workspace', 'index.html'),
+                path.join(cddDir, 'login', 'index.html'),
+                path.join(cddDir, 'auth-callback', 'index.html'),
+                path.join(cddDir, 'dashboard', 'index.html'),
+                path.join(cddDir, 'dashboard', 'organizations', 'index.html'),
+                path.join(cddDir, 'dashboard', 'repositories', 'index.html'),
+                path.join(cddDir, 'dashboard', 'secrets', 'index.html'),
+                path.join(cddDir, 'dashboard', 'audit-logs', 'index.html')
+            ];
+
+            for (const targetPath of fallbackPaths) {
+                expect(fs.existsSync(targetPath)).toBe(true);
+                expect(fs.readFileSync(targetPath, 'utf8')).toBe(rootIndex);
+            }
+        });
     });
 });

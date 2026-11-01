@@ -32,6 +32,12 @@ mkdir "cdd-web-ui"
 xcopy /E /I /Y "..\cdd-web-ui\dist\cdd-web-ui\browser\*" "cdd-web-ui"
 if errorlevel 1 exit /b 1
 if exist "cdd-web-ui\assets\wasm" rmdir /s /q "cdd-web-ui\assets\wasm"
+copy /Y "cdd-web-ui\index.html" "cdd-web-ui\404.html" >nul
+copy /Y "cdd-web-ui\index.html" "404.html" >nul
+for %%R in (workspace login auth-callback dashboard dashboard\organizations dashboard\repositories dashboard\secrets dashboard\audit-logs) do (
+    if not exist "cdd-web-ui\%%R" mkdir "cdd-web-ui\%%R"
+    copy /Y "cdd-web-ui\index.html" "cdd-web-ui\%%R\index.html" >nul
+)
 GOTO :EOF
 
 :build
